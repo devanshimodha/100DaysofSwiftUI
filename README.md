@@ -6,3 +6,5 @@ Paul Hudson's course
 Day 1 – Simple Types: Variables, simple data types, and string interpolation
 
 Day 2 – Complex Data Types: Arrays, dictionaries, sets, and enums
+
+Day 3 – Operators and conditions
