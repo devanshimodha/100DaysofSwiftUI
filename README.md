@@ -22,3 +22,16 @@ Day 8 – Structs, properties, and methods
 Day 9 – Access control, static properties, and laziness
 
 Day 10 – Classes and inheritance
+
+Day 11 – protocols, extensions, and protocol extensions
+
+Day 12 – optionals, unwrapping, and typecasting
+ 
+
+# Days 13-15: Consolidation I
+
+Day 13 – Swift review, day one
+
+Day 14 – Swift review, day two
+
+Day 15 – Swift review, day three
