@@ -9,98 +9,58 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State private var tapCount = 0
-    @State private var name = ""
-    @State private var selectedStudent = 0
+    @State private var checkAmount = ""
+    @State private var numberOfPeople = 2
+    @State private var tipPercentage = 2
     
-    let students = ["Harry", "Hermione", "Ron"]
+    var totalPerPerson: Double {
+        let peopleCount = Double(numberOfPeople + 2)
+        let tipSelection = Double(tipPercentages[tipPercentage])
+        let orderAmount = Double(checkAmount) ?? 0
+        
+        let tipValue = orderAmount / 100 * tipSelection
+        let grandTotal = orderAmount + tipValue
+        let amountPerPerson = grandTotal / peopleCount
+
+        return amountPerPerson
+    }
+    
+    let tipPercentages = [10, 15, 20, 25, 0]
     
     var body: some View {
-// Understanding the basic structure of a SwiftUI app
-//        Text("Hello World")
-        
-// Creating a form
-//        Form {
-//            Text("Hello World")
-//            Text("Hello World")
-//            Text("Hello World")
-//            Text("Hello World")
-//            Text("Hello World")
-//            Text("Hello World")
-//            Text("Hello World")
-//            Text("Hello World")
-//            Text("Hello World")
-//            Text("Hello World")
-//        } // Maximum 10 childs
-
-//        Form {
-//            Group {
-//                Text("Hello World")
-//                Text("Hello World")
-//                Text("Hello World")
-//                Text("Hello World")
-//                Text("Hello World")
-//                Text("Hello World")
-//            }
-//
-//            Group {
-//                Text("Hello World")
-//                Text("Hello World")
-//                Text("Hello World")
-//                Text("Hello World")
-//                Text("Hello World")
-//            }
-//        }
-
-//        Form {
-//            Section {
-//                Text("Hello World")
-//            }
-//
-//            Section {
-//                Text("Hello World")
-//                Text("Hello World")
-//            }
-//        }
-
-// Adding a navigation bar
-//        NavigationView {
-//            Form {
-//                Section {
-//                    Text("Hello World")
-//                }
-//            }
-//            .navigationBarTitle(Text("SwiftUI"))
-//            .navigationBarTitle("SwiftUI", displayMode: .inline)
-//            .navigationBarTitle("SwiftUI")
-//        }
-        
-// Modifying program state
-//        Button("Tap Count: \(tapCount)") {
-//            self.tapCount += 1
-//        }
-        
-//Binding state to user interface controls
-        Form {
-            TextField("Enter your name", text: $name)
-            Text("Your name is \(name)")
+// Reading text from the user with TextField
+        NavigationView {
+            Form {
+                Section {
+                    TextField("Amount", text: $checkAmount)
+                        .keyboardType(.decimalPad)
+                    
+// Creating pickers in a form
+                    Picker("Number of people", selection: $numberOfPeople) {
+                        ForEach(2 ..< 100) {
+                            Text("\($0) people")
+                        }
+                    }
+                }
+                
+// Adding a segmented control for tip percentages
+                
+                Section(header: Text("How much tip do you want to leave?")) {
+                    Picker("Tip percentage", selection: $tipPercentage) {
+                        ForEach(0 ..< tipPercentages.count) {
+                            Text("\(self.tipPercentages[$0])%")
+                        }
+                    }
+                    .pickerStyle(SegmentedPickerStyle())
+                }
+                
+                Section {
+                    Text("$\(totalPerPerson, specifier: "%.2f")")
+                }
+                
+//                Calculating the total per person
+            }.navigationBarTitle("WeSplit")
         }
-        
-//        Form {
-//            ForEach(0 ..< 100) {
-//                Text("Row \($0)")
-//            }
-//        }
-        
-// Creating views in a loop
-//        VStack {
-//            Picker("Select your student", selection: $selectedStudent) {
-//                ForEach(0 ..< students.count) {
-//                    Text(self.students[$0])
-//                }
-//            }
-//            Text("You chose: Student # \(students[selectedStudent])")
-//        }
     }
 }
 
