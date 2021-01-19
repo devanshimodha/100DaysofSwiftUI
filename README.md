@@ -35,3 +35,12 @@ Day 13 – Swift review, day one
 Day 14 – Swift review, day two
 
 Day 15 – Swift review, day three
+
+# Days 16-24: Starting SwiftUI
+
+Day 16 – Project 1, part one
+
+Day 17 – Project 1, part two
+
+Day 18 – Project 1, part three
+
