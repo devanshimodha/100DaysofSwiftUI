@@ -22,7 +22,7 @@ struct ContentView: View {
         let grandTotal = orderAmount + tipValue
         let amountPerPerson = grandTotal / peopleCount
 
-        return amountPerPerson
+        return amountPerPerson.isNaN ? 0 : amountPerPerson
     }
     
     var grandTotal: Double {
@@ -55,7 +55,6 @@ struct ContentView: View {
                 }
                 
 // Adding a segmented control for tip percentages
-                
                 Section(header: Text("How much tip do you want to leave?")) {
                     Picker("Tip percentage", selection: $tipPercentage) {
                         ForEach(0 ..< tipPercentages.count) {
