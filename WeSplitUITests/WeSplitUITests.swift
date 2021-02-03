@@ -6,6 +6,7 @@
 //
 
 import XCTest
+@testable import WeSplit
 
 class WeSplitUITests: XCTestCase {
 
